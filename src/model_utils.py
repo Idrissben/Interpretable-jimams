@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.dummy import DummyClassifier
+from pygam import LogisticGAM
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, roc_auc_score, f1_score
 from sklearn.model_selection import GridSearchCV
 import pickle
@@ -8,6 +9,11 @@ def fit_dummy_classifier(X_train, y_train):
     dummy_classifier = DummyClassifier(strategy='most_frequent')
     dummy_classifier.fit(X_train, y_train)
     return dummy_classifier
+
+def fit_logistic_gam(X_train, y_train):
+    gam = LogisticGAM()
+    gam.fit(X_train, y_train)
+    return gam
 
 def evaluate_model(model, X, y):
     y_pred = model.predict(X)
