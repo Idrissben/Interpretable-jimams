@@ -11,6 +11,7 @@ def preprocess_data(raw_data, mitigation=False):
 
     if mitigation:
         data = data.drop(columns={"sex", "race / ethnicity"})
+        df_one_hot = data
     else:
         df_one_hot = pd.get_dummies(data, columns=[
             "sex", "race / ethnicity"], drop_first=True)
