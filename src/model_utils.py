@@ -24,7 +24,7 @@ def evaluate_model(model, X, y):
     return accuracy, balanced_accuracy, roc_auc, f1
 
 def grid_search(estimator, X_train, y_train, param_grid, cv, scoring):
-    grid_search = GridSearchCV(estimator, param_grid, cv, scoring)
+    grid_search = GridSearchCV(estimator=estimator, param_grid=param_grid, cv=cv, scoring=scoring)
     grid_search.fit(X_train, y_train)
     best_estimator = grid_search.best_estimator_
     return best_estimator
